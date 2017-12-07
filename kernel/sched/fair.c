@@ -3230,26 +3230,26 @@ static inline int wake_to_idle(struct task_struct *p)
 static inline bool
 bias_to_prev_cpu(struct cpu_select_env *env, struct cluster_cpu_stats *stats)
 {
-	int prev_cpu;
-	struct task_struct *task = env->p;
-	struct sched_cluster *cluster;
+	    int prev_cpu;
+	    struct task_struct *task = env->p;
+	    struct sched_cluster *cluster;
 
     int normal_path = env->op_path == OP_PATH_NORMAL;
 
     if (env->boost || env->reason || env->need_idle ||
-                !task->ravg.mark_start ||
-                (normal_path && !sched_short_sleep_task_threshold))
-		return false;
+                    !task->ravg.mark_start ||
+                    (normal_path && !sched_short_sleep_task_threshold))
+		    return false;
 
 	prev_cpu = env->prev_cpu;
 	if (!cpumask_test_cpu(prev_cpu, tsk_cpus_allowed(task)) ||
-					unlikely(!cpu_active(prev_cpu)))
-		return false;
+					    unlikely(!cpu_active(prev_cpu)))
+		    return false;
 
     if (normal_path)
-	if (task->ravg.mark_start - task->last_cpu_selected_ts >=
-				sched_long_cpu_selection_threshold)
-		return false;
+	    if (task->ravg.mark_start - task->last_cpu_selected_ts >=
+				    sched_long_cpu_selection_threshold)
+		    return false;
 
 	/*
 	 * This function should be used by task wake up path only as it's
