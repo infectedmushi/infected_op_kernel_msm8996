@@ -1,4 +1,4 @@
-export CROSS_COMPILE=/mnt/Building/aarch64-linux-gnu-4.9/bin/aarch64-linux-gnu-
+export CROSS_COMPILE=/mnt/Building/aarch64-linux-gnu-5.5/bin/aarch64-linux-gnu-
 export ARCH=arm64
 export SUB_ARCH=arm64
 make O=out clean
