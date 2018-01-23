@@ -1,0 +1,10 @@
+export CROSS_COMPILE=/mnt/Building/aarch64-linux-gnu-6.4/bin/aarch64-linux-gnu-
+export ARCH=arm64
+export SUB_ARCH=arm64
+export USE_CCACHE=1
+#make clean
+#make mrproper
+rm -rf out
+make O=out msm-perf_defconfig
+make O=out menuconfig
+make O=out -j$(nproc --all)
