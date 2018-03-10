@@ -1,0 +1,9 @@
+export CROSS_COMPILE=/mnt/Building/aarch64-linux-gnu-6.4-linaro/bin/aarch64-linux-gnu-
+export ARCH=arm64
+export SUB_ARCH=arm64
+export USE_CCACHE=1
+mkdir -p out
+make O=out clean
+make O=out mrproper
+make O=out infected_defconfig
+make O=out -j$(nproc --all)
